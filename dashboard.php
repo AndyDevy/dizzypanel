@@ -78,6 +78,7 @@ if ($_GET) {
                         echo "<td> You've got no bots assigned. </td>";
                         echo '<td> </td>';
                         echo '<td> </td>';
+                        echo '<td> </td>';
                         echo '</tr>';
                       }
                       while ($row = mysqli_fetch_assoc($result)) {

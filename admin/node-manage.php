@@ -26,6 +26,17 @@
               include '../includes/dbh.inc.php';
               $sql = "SELECT node_id, node_ip, node_ram, node_bots, node_limit, node_code, node_locat FROM nodes;";
               $result = mysqli_query($conn, $sql);
+              if ($resultCheck = mysqli_num_rows($result) < 1) {
+                echo '<tr>';
+                echo "<td> There are no nodes linked to this panel. </td>";
+                echo '<td> </td>';
+                echo '<td> </td>';
+                echo '<td> </td>';
+                echo '<td> </td>';
+                echo '<td> </td>';
+                echo '<td> </td>';
+                echo '</tr>';
+              }
               while ($row = mysqli_fetch_assoc($result)){
                 // Listing all users
                 echo '<tr>';

@@ -22,6 +22,14 @@
                         $id = $_SESSION['u_id'];
                         $sql = "SELECT ticket_id, ticket_subject, ticket_sender, ticket_status FROM tickets;";
                         $result = mysqli_query($conn, $sql);
+                        if ($resultCheck = mysqli_num_rows($result) < 1) {
+                          echo '<tr>';
+                          echo "<td> No support tickets found. </td>";
+                          echo '<td> </td>';
+                          echo '<td> </td>';
+                          echo '<td> </td>';
+                          echo '</tr>';
+                        }
                         while ($row = mysqli_fetch_assoc($result)) {
                           $sender = $row['ticket_sender'];
                           $sql2 = "SELECT user_uid FROM users WHERE user_id = $sender";

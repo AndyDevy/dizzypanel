@@ -23,6 +23,13 @@
                         include 'includes/dbh.inc.php';
                         $sql = "SELECT ticket_id, ticket_subject, ticket_status FROM tickets WHERE ticket_sender=$id;";
                         $result = mysqli_query($conn, $sql);
+                        if ($resultCheck = mysqli_num_rows($result) < 1) {
+                        echo '<tr>';
+                        echo "<td> You've got no support tickets. </td>";
+                        echo '<td> </td>';
+                        echo '<td> </td>';
+                        echo '</tr>';
+                        }
                         while ($row = mysqli_fetch_assoc($result)) {
                           // Listing all tickets from the user
                           echo '<tr>';
