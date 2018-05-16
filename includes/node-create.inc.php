@@ -4,7 +4,7 @@ if (isset($_POST['submit'])) {
 	include_once 'dbh.inc.php';
 
 	$ip = mysqli_real_escape_string($conn, $_POST['ip']);
-  $ram = mysqli_real_escape_string($conn, $_POST['ram']);
+	$ram = mysqli_real_escape_string($conn, $_POST['ram']);
 	$limit = mysqli_real_escape_string($conn, $_POST['bot-limit']);
 	$code = mysqli_real_escape_string($conn, $_POST['code']);
 	$locat = mysqli_real_escape_string($conn, $_POST['locat']);
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
 			// Insert the node into the Database
 			$sql = "INSERT INTO nodes (node_ip, node_ram, node_bots, node_limit, node_code, node_locat) VALUES ('$ip', $ram, 0, $limit, '$code', '$locat');";
 			mysqli_query($conn, $sql);
-			header ("Location: ../admin/node-manage.php?create=success");
+			header ("Location: ../admin/node-create.php?create=success");
 		}
 	}
 } else {

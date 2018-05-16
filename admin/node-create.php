@@ -1,4 +1,28 @@
-<?php include 'header.php'; ?>
+<?php 
+    include 'header.php'; 
+    
+    // Flash Notifications
+    $code = '';
+    if ($_GET) {
+      $code = $_GET['create'];
+      switch ($code) {
+        case 'empty_fields':
+        $flash = "You can't leave empty fields!";
+        break;
+        case 'ip_exists':
+        $flash = "A node with that IP address already exists.";
+        break;
+        case 'success':
+        $flash = "Bot created succesfully.";
+        break;
+        case 'error':
+        $flash = "An unexpected error happened.";
+        break;
+      }
+    } else {
+      $flash = '';
+    }
+?>
 <div class="page-content">
     <div class="page-header">
         <div class="container-fluid">
@@ -6,8 +30,19 @@
         </div>
     </div>
         <div class="col-lg-12">
+            <?php
+              if ($code == "success") {
+                echo '<div class="block" style="background-color: green; color: white;">';
+                echo $flash;
+                echo '</div>';
+              } elseif ($code) {
+                echo '<div class="block" style="background-color: red; color: white;">';
+                echo $flash;
+                echo '</div>';
+              }
+             ?>
             <div class="block">
-                <div class="title"><strong>Create Bot</strong></div>
+                <div class="title"><strong>Create Node</strong></div>
               <!-- Craete User Form -->
               <div class="form d-flex align-items-center">
                 <center>
